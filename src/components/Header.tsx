@@ -4,6 +4,7 @@ import WifiIcon from "@mui/icons-material/Wifi";
 import { BsBatteryFull } from "react-icons/bs";
 import classnames from "classnames";
 import { NikudaLogo } from "./icon/NikudaLogo";
+import Link from "next/link";
 
 export const Header = (props: {
   isDarkMode: boolean;
@@ -20,7 +21,7 @@ export const Header = (props: {
     <>
       <nav
         className={classnames(
-          "fixed top-0 flex w-full justify-between py-3 text-sm",
+          "fixed top-0 flex w-full justify-between py-3 text-base",
           {
             "bg-gradient-to-r from-violet-900/95 to-indigo-900/95 text-white":
               isDarkMode,
@@ -29,29 +30,29 @@ export const Header = (props: {
           }
         )}
       >
-        <ul className="mx-4 flex gap-4">
+        <ul className="mx-5 flex gap-5">
           <li>
             <a href="#">
               <NikudaLogo
                 style={isDarkMode ? { fill: "white" } : { fill: "black" }}
-                className="w-5"
+                className="w-6"
               />
             </a>
           </li>
           <li>
-            <a href="#about">Nikuda</a>
+            <Link href="/">Nikuda</Link>
           </li>
           <li>
-            <a href="#works">ファイル</a>
+            <Link href="/file">ファイル</Link>
           </li>
           <li>
-            <a href="#contact">作品</a>
+            <Link href="/product">作品</Link>
           </li>
           <li>
-            <a href="#contact">連絡</a>
+            <Link href="/contact">連絡先</Link>
           </li>
         </ul>
-        <ul className="mx-3 flex items-center justify-center gap-3">
+        <ul className="mx-5 flex items-center justify-center gap-5">
           <li>
             <button
               className={classnames("w-8 space-x-1 rounded border", {

@@ -1,30 +1,20 @@
-"use client";
-
-import { Header } from "@/components/Header";
 import "./globals.css";
-import { Desktop } from "@/components/Desktop";
-import { useDateTime } from "@/api/useDateTime";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "onikumaru",
+  description:
+    "onikumaru.comはonikumaruのポートフォリオです。ここではonikumaruが今まで作成したプロダクトを紹介します。プロダクトには、ウェブアプリケーションやIoTデバイスなどが含まれています。このサイトを通じて、制作者のスキルや制作実績をご確認ください!",
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { month, day, weekday, hours, minutes, isEvening } = useDateTime();
   return (
     <html lang="ja">
-      <body className="text-white">
-        <Header
-          isDarkMode={isEvening}
-          month={month}
-          day={day}
-          weekday={weekday}
-          hours={hours}
-          minutes={minutes}
-        />
-        <Desktop isDarkMode={isEvening} />
-        {children}
-      </body>
+      <body className="text-white">{children}</body>
     </html>
   );
 }
