@@ -1,34 +1,41 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import WifiIcon from "@mui/icons-material/Wifi";
 import { BsBatteryFull } from "react-icons/bs";
+import classnames from "classnames";
+import { NikudaLogo } from "./icon/NikudaLogo";
 
-export const Header = () => {
-  const [time, setTime] = useState(new Date());
+export const Header = (props: {
+  isDarkMode: boolean;
+  month: number;
+  day: number;
+  weekday: string;
+  hours: number;
+  minutes: string;
+}) => {
+  const { isDarkMode, month, day, weekday, hours, minutes } = props;
   const [isKeyKana, setIsKeyKana] = useState(false);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const month = time.getMonth() + 1;
-  const day = time.getDate();
-  const weekday = ["日", "月", "火", "水", "木", "金", "土"][time.getDay()];
-  const hours = time.getHours();
-  const minutes = ("0" + time.getMinutes()).slice(-2);
 
   return (
     <>
-      <nav className="fixed top-0 flex w-full justify-between bg-gradient-to-r from-violet-900 to-indigo-900 py-3 text-sm text-white">
-        <ul className="mx-3 flex gap-3">
+      <nav
+        className={classnames(
+          "fixed top-0 flex w-full justify-between py-3 text-sm",
+          {
+            "bg-gradient-to-r from-violet-900/95 to-indigo-900/95 text-white":
+              isDarkMode,
+            "bg-gradient-to-r from-pink-200/95 via-white to-pink-200/95 text-black":
+              !isDarkMode,
+          }
+        )}
+      >
+        <ul className="mx-4 flex gap-4">
           <li>
             <a href="#">
-              <img src="/logo.svg" alt="logo" width="20px" />
+              <NikudaLogo
+                style={isDarkMode ? { fill: "white" } : { fill: "black" }}
+                className="w-5"
+              />
             </a>
           </li>
           <li>
@@ -38,7 +45,7 @@ export const Header = () => {
             <a href="#works">ファイル</a>
           </li>
           <li>
-            <a href="#contact">プロダクト</a>
+            <a href="#contact">作品</a>
           </li>
           <li>
             <a href="#contact">連絡</a>
@@ -46,37 +53,28 @@ export const Header = () => {
         </ul>
         <ul className="mx-3 flex items-center justify-center gap-3">
           <li>
-            {isKeyKana ? (
-              <button
-                className="w-8 space-x-1 rounded border border-white text-white"
-                onClick={() => {
-                  setIsKeyKana(false);
-                }}
-              >
-                A
-              </button>
-            ) : (
-              <button
-                className="w-8 space-x-1 rounded border border-white text-white"
-                onClick={() => {
-                  setIsKeyKana(true);
-                }}
-              >
-                あ
-              </button>
-            )}
+            <button
+              className={classnames("w-8 space-x-1 rounded border", {
+                "border-white": isDarkMode,
+                "border-black": !isDarkMode,
+              })}
+              onClick={() => {
+                setIsKeyKana(!isKeyKana);
+              }}
+            >
+              {isKeyKana ? "A" : "あ"}
+            </button>
           </li>
           <li className="flex items-center justify-center gap-1.5 text-xs">
             100%
-            <BsBatteryFull className="text-2xl text-white" />
+            <BsBatteryFull className="text-2xl" />
           </li>
           <li>
-            <WifiIcon className="text-white" />
+            <WifiIcon />
           </li>
           <li>
             <button>
               <SearchIcon
-                className="text-white"
                 onClick={() => {
                   console.log("search");
                 }}
