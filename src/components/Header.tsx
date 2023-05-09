@@ -5,7 +5,7 @@ import { BsBatteryFull } from "react-icons/bs";
 import classnames from "classnames";
 import { NikudaLogo } from "./icon/NikudaLogo";
 import Link from "next/link";
-import { PathNames } from "@/type";
+import { PageNamePath } from "@/type";
 
 export const Header = (props: {
   isDarkMode: boolean;
@@ -40,7 +40,10 @@ export const Header = (props: {
               />
             </Link>
           </li>
-          {PathNames.map((pathName) => (
+          <li>
+            <Link href="/">onikumaru</Link>
+          </li>
+          {PageNamePath.map((pathName) => (
             <li key={pathName.name}>
               <Link href={pathName.path}>{pathName.name}</Link>
             </li>

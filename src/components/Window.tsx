@@ -15,21 +15,24 @@ export const Window = (props: { children?: React.ReactNode }) => {
     >
       <div className="fixed h-full w-full rounded-lg bg-white text-black">
         <div
-          className={classNames("fixed w-full p-2", {
-            "rounded-t-lg bg-zinc-200": !isFullScreen,
-            "bg-white shadow-lg": isFullScreen,
-          })}
+          className={classNames(
+            "fixed flex h-12 w-full items-center justify-start px-2",
+            {
+              "rounded-t-lg bg-zinc-200": !isFullScreen,
+              "bg-white shadow-lg": isFullScreen,
+            }
+          )}
         >
           <button
             className="m-1 h-4 w-4 rounded-full bg-red-500"
             onClick={() => {
-              router.push("/");
+              router.push("/home");
             }}
           />
           <button
             className="m-1 h-4 w-4 rounded-full bg-yellow-500"
             onClick={() => {
-              router.push("/");
+              router.push("/home");
             }}
           />
           <button
