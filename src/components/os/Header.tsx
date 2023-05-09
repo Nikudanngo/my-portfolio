@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import WifiIcon from "@mui/icons-material/Wifi";
 import { BsBatteryFull } from "react-icons/bs";
 import classnames from "classnames";
-import { NikudaLogo } from "./icon/NikudaLogo";
+import { NikudaLogo } from "@/components/icon/NikudaLogo";
 import Link from "next/link";
 import { PageNamePath } from "@/type";
 

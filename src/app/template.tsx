@@ -1,9 +1,9 @@
 "use client";
 
 import { useDateTime } from "@/api/useDateTime";
-import { Desktop } from "@/components/Desktop";
-import { Header } from "@/components/Header";
-import { File } from "@/components/File";
+import { Desktop } from "@/components/os/Desktop";
+import { Header } from "@/components/os/Header";
+import { File } from "@/components/os/File";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { month, day, weekday, hours, minutes, isEvening } = useDateTime();

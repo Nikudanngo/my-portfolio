@@ -1,5 +1,5 @@
 "use client";
-import { Window } from "@/components/Window";
+import { Window } from "@/components/os/Window";
 import { PageNamePath } from "@/type";
 import Link from "next/link";
 
@@ -24,7 +24,7 @@ export default function App() {
                 return (
                   <button
                     key={pathName.name}
-                    className="text-blue-600 underline"
+                    className="text-blue-600 underline hover:text-blue-400"
                   >
                     <Link href={pathName.path}>{pathName.path.split("/")}</Link>
                   </button>
@@ -32,7 +32,6 @@ export default function App() {
               })}
             </div>
           </div>
-          {/* <div className="h-full">hello</div> */}
         </div>
       </Window>
     </>
