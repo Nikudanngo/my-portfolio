@@ -8,20 +8,20 @@ export const Window = (props: { children?: React.ReactNode }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   return (
     <div
-      className={classNames("flex min-h-screen w-full", {
-        "fixed z-10": isFullScreen,
-        "pt-12": !isFullScreen,
+      className={classNames("flex w-full", {
+        "min-h-screen pt-12": !isFullScreen,
+        "fixed top-0 z-40 h-full": isFullScreen,
       })}
     >
-      <div className="w-full rounded-lg bg-white text-black">
+      <div className="fixed h-full w-full rounded-lg bg-white text-black">
         <div
-          className={classNames("w-full p-2", {
+          className={classNames("fixed w-full p-2", {
             "rounded-t-lg bg-zinc-200": !isFullScreen,
             "bg-white shadow-lg": isFullScreen,
           })}
         >
           <button
-            className="z-40 m-1 h-4 w-4 rounded-full bg-red-500"
+            className="m-1 h-4 w-4 rounded-full bg-red-500"
             onClick={() => {
               router.push("/");
             }}
@@ -39,7 +39,7 @@ export const Window = (props: { children?: React.ReactNode }) => {
             }}
           />
         </div>
-        {children}
+        <div className="h-full w-full overflow-y-auto pt-12">{children}</div>
       </div>
     </div>
   );
