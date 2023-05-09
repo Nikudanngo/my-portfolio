@@ -5,6 +5,7 @@ import { BsBatteryFull } from "react-icons/bs";
 import classnames from "classnames";
 import { NikudaLogo } from "./icon/NikudaLogo";
 import Link from "next/link";
+import { PathNames } from "@/type";
 
 export const Header = (props: {
   isDarkMode: boolean;
@@ -39,18 +40,11 @@ export const Header = (props: {
               />
             </a>
           </li>
-          <li>
-            <Link href="/">Nikuda</Link>
-          </li>
-          <li>
-            <Link href="/file">ファイル</Link>
-          </li>
-          <li>
-            <Link href="/product">作品</Link>
-          </li>
-          <li>
-            <Link href="/contact">連絡先</Link>
-          </li>
+          {PathNames.map((pathName) => (
+            <li key={pathName.name}>
+              <Link href={pathName.path}>{pathName.name}</Link>
+            </li>
+          ))}
         </ul>
         <ul className="mx-5 flex items-center justify-center gap-5">
           <li>
