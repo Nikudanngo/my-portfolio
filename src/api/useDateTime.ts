@@ -15,7 +15,7 @@ export function useDateTime(): DateTime {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(new Date());
-    }, 1000);
+    }, 10000);
     return () => clearInterval(intervalId);
   }, []);
 
