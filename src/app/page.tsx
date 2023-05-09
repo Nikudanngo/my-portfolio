@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <>
-      <main className="flex items-center justify-center">aaa</main>
+      <main className="flex h-full items-center justify-center">aaa</main>
     </>
   );
 }

@@ -9,7 +9,7 @@ export const File = ({
 }) => {
   const router = useRouter();
   return (
-    <div className="z-20 m-2 flex flex-col items-center justify-center">
+    <div className="m-2 flex flex-col items-center justify-center">
       <img
         src="/folder-icon.webp"
         alt="folder-icon"

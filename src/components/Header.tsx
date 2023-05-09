@@ -20,9 +20,9 @@ export const Header = (props: {
 
   return (
     <>
-      <nav
+      <header
         className={classnames(
-          "fixed top-0 flex w-full justify-between py-3 text-base",
+          "fixed top-0 z-10 flex h-12 w-full items-center justify-between text-base",
           {
             "bg-gradient-to-r from-violet-900/95 to-indigo-900/95 text-white":
               isDarkMode,
@@ -33,12 +33,12 @@ export const Header = (props: {
       >
         <ul className="mx-5 flex gap-5">
           <li>
-            <a href="#">
+            <Link href="/">
               <NikudaLogo
                 style={isDarkMode ? { fill: "white" } : { fill: "black" }}
                 className="w-6"
               />
-            </a>
+            </Link>
           </li>
           {PathNames.map((pathName) => (
             <li key={pathName.name}>
@@ -80,7 +80,7 @@ export const Header = (props: {
             {month}月{day}日({weekday}) {hours}:{minutes}
           </li>
         </ul>
-      </nav>
+      </header>
     </>
   );
 };
