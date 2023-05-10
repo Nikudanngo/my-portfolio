@@ -1,7 +1,5 @@
+import { Notion } from "@/components/os/Notion";
+
 export default function Contact() {
-  return (
-    <>
-      <main className="pt-12 text-white">contact</main>
-    </>
-  );
+  return <Notion>adsa</Notion>;
 }

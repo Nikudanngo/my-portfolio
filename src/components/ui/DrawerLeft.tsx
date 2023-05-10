@@ -9,7 +9,7 @@ export const DrawerLeft = () => {
     setPathname(window.location.pathname);
   }, []);
   return (
-    <div className="flex h-full w-64 items-center justify-center border-r border-notion-text/20 bg-white text-3xl text-notion-text">
+    <div className="flex h-full w-full items-center justify-center border-r border-notion-text/20 bg-white text-3xl text-notion-text">
       <div className="flex flex-col items-start gap-8">
         {PageNamePath.map((pathName) => (
           <button key={pathName.name}>

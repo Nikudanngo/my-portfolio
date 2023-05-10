@@ -2,9 +2,13 @@
 
 import classNames from "classnames";
 
-export const Level = ({ levelNumber }: { levelNumber: 1 | 2 | 3 | 4 | 5 }) => {
-  const levelClassName = `w-${levelNumber}/5`;
-  const diffLevelClassName = `w-${5 - levelNumber}/5`;
+export const Level = ({
+  levelClassName,
+  diffLevelClassName,
+}: {
+  levelClassName: string;
+  diffLevelClassName: string;
+}) => {
   return (
     <td className="h-full w-full">
       <div className="flex h-2 items-center justify-center">
