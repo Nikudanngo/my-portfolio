@@ -2,8 +2,11 @@ import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export const Window = (props: { children?: React.ReactNode }) => {
-  const { children } = props;
+export const Window = (props: {
+  children?: React.ReactNode;
+  topClassName?: string;
+}) => {
+  const { children, topClassName } = props;
   const router = useRouter();
   const [isFullScreen, setIsFullScreen] = useState(false);
   return (
@@ -19,8 +22,9 @@ export const Window = (props: { children?: React.ReactNode }) => {
             "fixed flex h-12 w-full items-center justify-start px-2",
             {
               "rounded-t-lg bg-zinc-200": !isFullScreen,
-              "bg-white shadow-lg": isFullScreen,
-            }
+              "w-full bg-white shadow-lg": isFullScreen,
+            },
+            topClassName
           )}
         >
           <button

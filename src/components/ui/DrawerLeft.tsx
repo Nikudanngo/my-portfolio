@@ -9,14 +9,14 @@ export const DrawerLeft = () => {
     setPathname(window.location.pathname);
   }, []);
   return (
-    <div className="flex h-full w-64 flex-col items-center justify-center bg-gray-100 text-3xl">
+    <div className="flex h-full w-64 items-center justify-center border-r border-notion-text/20 bg-white text-3xl text-notion-text">
       <div className="flex flex-col items-start gap-8">
         {PageNamePath.map((pathName) => (
           <button key={pathName.name}>
             <Link href={pathName.path}>
               <li
                 className={classnames(
-                  "list-none text-blue-600 underline hover:text-blue-400",
+                  "list-none underline hover:text-notion-hover",
                   {
                     "w-full !list-disc": pathName.path === pathname,
                   }
@@ -28,7 +28,6 @@ export const DrawerLeft = () => {
           </button>
         ))}
       </div>
-      {/* {location} */}
     </div>
   );
 };
