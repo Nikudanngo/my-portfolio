@@ -7,9 +7,7 @@ export default function Product() {
     <Notion>
       <div className="mx-auto w-1/2">
         <h2>Product</h2>
-        <p>
-          ここでは私が今まで制作してきたプロダクトを紹介します。詳細は各プロダクトのリンクからご覧ください。
-        </p>
+        <p>ここでは私が今まで制作してきたプロダクトを紹介します。</p>
         <h2>Portfolio</h2>
       </div>
       <div className="z-20 flex gap-4 overflow-x-auto">
@@ -34,7 +32,7 @@ export default function Product() {
             />
           </div>
           <div>
-            <p>3Dアバターの制作販売</p>
+            <p>竹歯ブラシ販売サイト</p>
           </div>
         </div>
         <div className="rounded-xl border-2 border-notion-text/20 p-1">
