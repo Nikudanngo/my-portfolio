@@ -44,7 +44,7 @@ export default function Product() {
             />
           </div>
           <div>
-            <p>3Dアバターの制作販売</p>
+            <p>学食モバイルオーダー</p>
           </div>
         </div>
       </div>
