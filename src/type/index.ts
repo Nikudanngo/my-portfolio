@@ -14,7 +14,7 @@ interface Product {
 }
 
 export const products: Product[] = [
-  { title: "3Dアバターの制作販売", colSpan: 2, image: "/Vroid.jpg", alt: "VRoid", description: "Vroidで作成した3Dアバターを販売しています。" },
+  { title: "3Dアバターの制作販売", colSpan: 2, image: "/VRoid.jpg", alt: "VRoid", description: "Vroidで作成した3Dアバターを販売しています。" },
   { title: "学食モバイルオーダー", colSpan: 4, image: "/thumbnail-run-ticket.png", alt: "RunTicket", description: "学食のモバイルオーダーシステムを作成しました。" },
   { title: "竹歯ブラシ販売サイト", colSpan: 4, image: "/ThoutOfOcean.jpg", alt: "KAGUYA", description: "竹歯ブラシの販売サイトを作成しました。" },
   { title: "ポートフォリオサイト", colSpan: 2, image: "/my-portfolio.png", alt: "my-portfolio", description: "このサイトです。" },
