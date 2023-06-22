@@ -6,7 +6,7 @@ import { Level } from "@/components/ui/Level";
 export default function About() {
   return (
     <Notion>
-      <div className="mx-auto w-1/2">
+      <div className="mx-auto w-2/3">
         <h1 className="font-bold">Hi, my name is Satoru Endo</h1>
         <h2>About me</h2>
         <p>
