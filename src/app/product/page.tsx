@@ -16,7 +16,10 @@ export default function Product() {
           {products.map((product) => (
             <div
               key={product.title}
-              className={classNames("rounded-xl border", product.className)}
+              className={classNames("rounded-xl border", {
+                "col-span-2": product.colSpan === 2,
+                "col-span-4": product.colSpan === 4,
+              })}
             >
               <img
                 src={product.image}
