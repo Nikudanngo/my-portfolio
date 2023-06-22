@@ -8,7 +8,7 @@ export default function Product() {
   return (
     <Notion>
       <div className="mx-auto w-2/3">
-        <h2>Product</h2>
+        <h2>プロダクト</h2>
         <p>ここでは私が今まで制作してきたプロダクトを紹介します。</p>
       </div>
       <div className="mx-auto w-3/4">
