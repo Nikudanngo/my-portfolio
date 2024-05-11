@@ -19,7 +19,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         minutes={minutes}
       />
       <Desktop isDarkMode={isEvening} />
-      <div className="fixed right-0 -z-10 flex flex-col pt-12">
+      <div className="fixed right-0 -z-10 flex flex-col items-end pt-12">
         <File fileName="詳細" path="about" />
         <File fileName="作品" path="product" />
         <File fileName="研究" path="research" />
