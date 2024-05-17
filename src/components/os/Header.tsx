@@ -22,7 +22,7 @@ export const Header = (props: {
     <>
       <header
         className={classnames(
-          "fixed top-0 z-10 flex h-12 w-full items-center justify-between text-base",
+          "fixed top-0 z-10 flex h-12 w-full items-center justify-between overflow-y-hidden text-base",
           {
             "bg-gradient-to-r from-violet-900/95 to-indigo-900/95 text-white":
               isDarkMode,
