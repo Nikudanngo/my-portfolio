@@ -17,7 +17,8 @@ export default function Product() {
             <div
               key={product.title}
               className={classNames("rounded-xl border", {
-                [`col-span-${product.colSpan}`]: product.colSpan
+                "col-span-2": product.colSpan === 2,
+                "col-span-4": product.colSpan === 4,
               })}
             >
               <img
