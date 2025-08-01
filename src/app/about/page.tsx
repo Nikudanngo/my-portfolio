@@ -26,11 +26,11 @@ export default function About() {
               </thead>
               <tbody>
                 <tr>
-                  <td>React</td>
+                  <td>Next.js</td>
                   <Level levelClassName="w-4/5" diffLevelClassName="w-1/5" />
                 </tr>
                 <tr>
-                  <td>Next.js</td>
+                  <td>React</td>
                   <Level levelClassName="w-3/5" diffLevelClassName="w-2/5" />
                 </tr>
                 <tr>
@@ -63,7 +63,7 @@ export default function About() {
                   <Level levelClassName="w-3/5" diffLevelClassName="w-2/5" />
                 </tr>
                 <tr>
-                  <td>C++</td>
+                  <td>Ruby on Rails</td>
                   <Level levelClassName="w-2/5" diffLevelClassName="w-3/5" />
                 </tr>
                 <tr>
