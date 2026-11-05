@@ -1,0 +1,98 @@
+name: Dependabot auto merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-auto-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  dependabot:
+    name: dependabot
+    if: >-
+      github.actor == 'dependabot[bot]' &&
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.base.ref == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Wait for checks and squash merge minor or patch update
+        if: >-
+          steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for attempt in {1..90}; do
+            pr=$(gh pr view "$PR_NUMBER" --json state,isDraft,headRefOid,mergeable,statusCheckRollup)
+
+            if [[ $(jq -r '.state' <<< "$pr") != OPEN ]]; then
+              echo "PR is no longer open."
+              exit 0
+            fi
+            if [[ $(jq -r '.headRefOid' <<< "$pr") != "$EXPECTED_HEAD" ]]; then
+              echo "PR head changed; a new workflow run must verify it."
+              exit 1
+            fi
+            if [[ $(jq -r '.isDraft' <<< "$pr") == true ]]; then
+              echo "Draft PRs are not merged."
+              exit 1
+            fi
+
+            # The running dependabot job must never wait for itself.
+            checks=$(jq '[.statusCheckRollup[] |
+              select(.__typename != "CheckRun" or .name != "dependabot")]' <<< "$pr")
+
+            if jq -e 'any(.[];
+              .state == "FAILURE" or .state == "ERROR" or
+              .conclusion == "FAILURE" or .conclusion == "CANCELLED" or
+              .conclusion == "TIMED_OUT" or .conclusion == "ERROR" or
+              .conclusion == "ACTION_REQUIRED" or .conclusion == "STARTUP_FAILURE" or
+              .conclusion == "STALE")' <<< "$checks" > /dev/null; then
+              echo "A check failed; refusing to merge."
+              jq . <<< "$checks"
+              exit 1
+            fi
+
+            # Vercel is a commit status context in this repository. Require its
+            # explicit success, even when GitHub has no required status checks.
+            if [[ $(jq -r '.mergeable' <<< "$pr") == MERGEABLE ]] &&
+              jq -e '
+                any(.[]; .context == "Vercel" and .state == "SUCCESS") and
+                all(.[];
+                  if .__typename == "CheckRun" then
+                    .status == "COMPLETED" and
+                    (.conclusion == "SUCCESS" or .conclusion == "NEUTRAL" or .conclusion == "SKIPPED")
+                  else .state == "SUCCESS" end)
+              ' <<< "$checks" > /dev/null; then
+              # Do not use --auto or wait for mergeStateStatus to leave UNSTABLE.
+              # Match the verified head so a concurrent update cannot be merged.
+              gh pr merge "$PR_NUMBER" --squash --match-head-commit "$EXPECTED_HEAD"
+              exit 0
+            fi
+
+            echo "Attempt $attempt/90: waiting for MERGEABLE and successful checks."
+            sleep 10
+          done
+
+          echo "Timed out waiting for mergeability and checks; PR was not merged."
+          exit 1
