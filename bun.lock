@@ -30,7 +30,7 @@
       },
       "devDependencies": {
         "eslint-plugin-tailwindcss": "^4.4.0",
-        "prettier": "^2.8.8",
+        "prettier": "^3.9.10",
         "prettier-plugin-tailwindcss": "^0.2.8",
       },
     },
@@ -968,7 +968,7 @@
 
     "prelude-ls": ["prelude-ls@1.2.1", "", {}, "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="],
 
-    "prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
+    "prettier": ["prettier@3.9.10", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA=="],
 
     "prettier-plugin-tailwindcss": ["prettier-plugin-tailwindcss@0.2.8", "", { "peerDependencies": { "@ianvs/prettier-plugin-sort-imports": "*", "@prettier/plugin-pug": "*", "@shopify/prettier-plugin-liquid": "*", "@shufo/prettier-plugin-blade": "*", "@trivago/prettier-plugin-sort-imports": "*", "prettier": ">=2.2.0", "prettier-plugin-astro": "*", "prettier-plugin-css-order": "*", "prettier-plugin-import-sort": "*", "prettier-plugin-jsdoc": "*", "prettier-plugin-organize-attributes": "*", "prettier-plugin-organize-imports": "*", "prettier-plugin-style-order": "*", "prettier-plugin-svelte": "*", "prettier-plugin-twig-melody": "*" }, "optionalPeers": ["@ianvs/prettier-plugin-sort-imports", "@prettier/plugin-pug", "@shopify/prettier-plugin-liquid", "@shufo/prettier-plugin-blade", "@trivago/prettier-plugin-sort-imports", "prettier-plugin-astro", "prettier-plugin-css-order", "prettier-plugin-import-sort", "prettier-plugin-jsdoc", "prettier-plugin-organize-attributes", "prettier-plugin-organize-imports", "prettier-plugin-style-order", "prettier-plugin-svelte", "prettier-plugin-twig-melody"] }, "sha512-KgPcEnJeIijlMjsA6WwYgRs5rh3/q76oInqtMXBA/EMcamrcYJpyhtRhyX1ayT9hnHlHTuO8sIifHF10WuSDKg=="],
 
