@@ -30,7 +30,7 @@
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.3.4",
-    "typescript": "5.0.4"
+    "typescript": "7.0.2"
   },
   "devDependencies": {
     "eslint-plugin-tailwindcss": "^4.4.0",
