@@ -23,7 +23,7 @@
     "eslint": "10.14.0",
     "eslint-config-next": "16.4.6",
     "next": "latest",
-    "postcss": "^8.5.32",
+    "postcss": "^8.5.33",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-icons": "^4.12.0",
